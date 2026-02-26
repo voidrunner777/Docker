@@ -1,0 +1,22 @@
+#Pi-Hole blacklist
+
+
+# idnes.cz
+servis.idnes.cz
+
+# seznam.cz
+sledovani.seznam.cz
+h.seznam.cz
+pocitadlolibise.seznam.cz
+
+# Ostatné blokované
+privacy.1gr.cz
+data.rozhlas.cz
+mluvii.csob.cz
+
+# Anténní TV (HBB TV)
+dispatcher.hybridtv.cra.cz
+hbb-prod.tvp.pl
+hbbtest.v3.tvp.pl
+hbbtv.ceskatelevize.cz
+mediaservices.cdn-apple.com
