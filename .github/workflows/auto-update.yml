@@ -1,0 +1,30 @@
+name: Update Blocklist Weekly
+
+on:
+  schedule:
+    # Spustí se každou neděli o půlnoci (UTC)
+    - cron: '0 0 * * 0'
+  workflow_dispatch: # Umožní spustit aktualizaci i ručně tlačítkem na GitHubu
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repozitáře
+      uses: actions/checkout@v4
+
+    - name: Nastavení Pythonu
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Spuštění updateru
+      run: python updater.py
+
+    - name: Uložení zmen do GitHubu
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add blocklist.txt
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update blocklist" && git push)
